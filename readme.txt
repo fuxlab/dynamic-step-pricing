@@ -12,6 +12,8 @@ Dynamic variable products with step pricing.
 
 == Description ==
 
+Use dynamic variable products with step pricing for woocommerce.
+
 == Installation ==
 
 1. Go to your admin area and select Plugins → Add New from the menu.

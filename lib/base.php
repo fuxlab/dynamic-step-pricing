@@ -1,17 +1,13 @@
 <?php
 /**
  * Plugin Name: Dynamic Step Pricing
- * Description: 
- * Plugin URI: https://fuxlab.com/
- * Author: fuxlab
- * Version: 0.0.1
- * Author URI: https://fuxlab.com/
- *
  * Text Domain: dynamic-step-pricing
 */
 
+if ( ! defined( 'ABSPATH' ) ) exit; // good bye script kiddies
+
 class DynamicStepPricing {
-  
+
   const PLUGIN_NAME = 'Dynamic Step Pricing';
   const VERSION = '0.0.1';
 

@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Dynamic Step Pricing
- * Description: 
- * Plugin URI: https://fuxlab.com/
- * Author: fuxlab
+ * Description: dynamic variable products with step pricing for woocommerce
+ * Plugin URI: https://github.com/fuxlab/dynamic-step-pricing
+ * Author: fuxlab / Frank Cieslik
  * Version: 0.0.1
  * Author URI: https://fuxlab.com/
  *
