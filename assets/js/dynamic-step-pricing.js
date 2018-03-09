@@ -32,7 +32,10 @@ var DynamicStepPricing = {
         }
       });
 
-      DynamicStepPricing.fields[original_field_name].sort();
+      // do correct integer sorting
+      DynamicStepPricing.fields[original_field_name].sort(function(a,b){
+        return a - b;
+      });
       // WIP: Preselction of already filled in values
       // DynamicStepPricing.breiten = $.map($('#'+field+' option') ,function(option) {
       //    if(option.value != "" && parseInt(option.value) > 0){
@@ -48,13 +51,11 @@ var DynamicStepPricing = {
   add_input_fields_actions: function(){
     jQuery.each(DynamicStepPricing.fields, function( original_field_name, steps ) {
       jQuery('#' + original_field_name + '_detail').on('input', function(e) {
-        
         value = jQuery(e.target).val();
         if( DynamicStepPricing.is_number(value) ) {
           value = parseInt(value);
           min = DynamicStepPricing.fields[original_field_name][0];
           max = DynamicStepPricing.fields[original_field_name][DynamicStepPricing.fields[original_field_name].length-1];
-          
           if( value >= min && value <= max) {
             jQuery(this).removeClass('error');
             step_value = DynamicStepPricing.fields[original_field_name][0];
@@ -78,8 +79,14 @@ var DynamicStepPricing = {
   
   hide_original_selection_boxes: function(){
     jQuery.each(DynamicStepPricing.fields, function( original_field_name, steps ) {
-      jQuery('#' + original_field_name).parents('.variations').hide();
+      jQuery('#' + original_field_name).parents('tr').hide();
+      // hide first variations if no fields in it are visible
+      if(jQuery('#' + original_field_name).parents('.variations').find('tr:visible').length == 0) {
+        jQuery('#' + original_field_name).parents('.variations').hide();
+      }
     });
+
+    
   },
 
   is_number: function(value){

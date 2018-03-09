@@ -36,7 +36,7 @@ function dynamic_step_pricing_meta_on_cart_and_checkout( $cart_data, $cart_item 
   }
 
   foreach( DynamicStepPricing::fields_for_product($cart_item['product_id']) as $field ) {
-    $field_name = $field.'_detail';
+    $field_name = $field . '_detail';
     if( isset( $cart_item[ $field_name ] ) ) {
       $custom_items[] = array( 'name' => DynamicStepPricing::name_for_field( $field ), 'value' => $cart_item[$field.'_detail'] );
     }
@@ -47,9 +47,9 @@ function dynamic_step_pricing_meta_on_cart_and_checkout( $cart_data, $cart_item 
 // for saving order in db
 function dynamic_step_pricing_order_item_meta( $item_id, $values, $cart_item_key ) {
   foreach( DynamicStepPricing::fields() as $field ) {
-    $field_name = $field.'_detail';
+    $field_name = $field . '_detail';
     if( isset( $values[$field_name] ) ) {
-      wc_add_order_item_meta( $item_id, DynamicStepPricing::name_for_field( $field_name ), $values[$field_name] );
+      wc_add_order_item_meta( $item_id, DynamicStepPricing::name_for_field( $field ), $values[$field_name] );
     }
   }
 }
@@ -57,7 +57,7 @@ function dynamic_step_pricing_order_item_meta( $item_id, $values, $cart_item_key
 function dynamic_step_pricing_product_detail_fields() {
   $fields = DynamicStepPricing::fields_for_product();
   echo '
-    <table class="variations" cellspacing="0">
+    <table class="variations details" cellspacing="0">
       <tbody>
   ';
   
@@ -65,7 +65,7 @@ function dynamic_step_pricing_product_detail_fields() {
     $field_name = $field.'_detail';
     echo '
       <tr>
-        <td class="label"><label for="widthmm">'.DynamicStepPricing::name_for_field( $field_name ).'</label></td>
+        <td class="label"><label for="widthmm">'.DynamicStepPricing::name_for_field( $field ).'</label></td>
         <td class="value">
           <input id="'.$field_name.'" type="text" name="'.$field_name.'" value="'.$_REQUEST[$fieldname].'" />                      
         </td>
