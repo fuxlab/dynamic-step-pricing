@@ -16,6 +16,7 @@ class DynamicStepPricing {
     $fields = [];
     if( isset( $options['fields'] ) ){
       $fields = explode( ',', $options['fields'] );
+      $fields = preg_filter('/^/', 'pa_', $fields);
     }
     return $fields;
   }
